@@ -112,6 +112,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
+                          backgroundColor: kPrimaryColorMid
                         ),
                         child: SvgPicture.asset(
                           "assets/icons/ArrowRight.svg",
