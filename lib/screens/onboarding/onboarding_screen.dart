@@ -47,55 +47,68 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
         ),
         child: SafeArea(
-          child: Column(
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent.withOpacity(0.1),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    const Text("Skip"),
-                    const SizedBox(
-                      width: 5,
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent.withOpacity(0.1),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text("Skip"),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          SvgPicture.asset("assets/icons/ArrowRight.svg",
+                              color: Colors.white, width: 20.0),
+                        ],
+                      ),
                     ),
-                    SvgPicture.asset("assets/icons/ArrowRight.svg",
-                        color: Colors.white, width: 20.0),
                   ],
                 ),
-              ),
-              Expanded(
-                child: PageView.builder(
-                  itemCount: demo_data.length,
-                  controller: _pageController,
-                  itemBuilder: (context, index) => OnboardContent(
-                    image: demo_data[index].image,
-                    title: demo_data[index].title,
+                Expanded(
+                  child: PageView.builder(
+                    itemCount: demo_data.length,
+                    controller: _pageController,
+                    itemBuilder: (context, index) => OnboardContent(
+                      image: demo_data[index].image,
+                      title: demo_data[index].title,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 60,
-                width: 60,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease,
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                  ),
-                  child: SvgPicture.asset(
-                    "assets/icons/ArrowRight.svg",
-                    color: Colors.white,
-                  ),
-                ),
-              )
-            ],
+                Row(
+                  children: [
+                    const Spacer(),
+                    SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/ArrowRight.svg",
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
