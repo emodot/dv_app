@@ -3,8 +3,27 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../constants.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +51,11 @@ class OnBoardingScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: PageView.builder(
-                  itemBuilder: (context, index) => const OnboardContent(
-                    image: "assets/images/onboarding-1.png",
-                    title: "Lorem ipsum dolor sit amet, consectetur",
+                  itemCount: demo_data.length,
+                  controller: _pageController,
+                  itemBuilder: (context, index) =>  OnboardContent(
+                    image: demo_data[index].image,
+                    title: demo_data[index].title,
                   ),
                 ),
               ),
@@ -42,7 +63,12 @@ class OnBoardingScreen extends StatelessWidget {
                 height: 60,
                 width: 60,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.ease,
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
                   ),
@@ -59,6 +85,30 @@ class OnBoardingScreen extends StatelessWidget {
     );
   }
 }
+
+class OnBoard {
+  final String image, title;
+
+  OnBoard({
+    required this.image,
+    required this.title,
+  });
+}
+
+final List<OnBoard> demo_data = [
+  OnBoard(
+    image: "assets/images/onboarding-1.png",
+    title: "Lorem ipsum dolor sit amet, consectetur",
+  ),
+  OnBoard(
+    image: "assets/images/onboarding-2.png",
+    title: "Lorem ipsum dolor sit amet, consectetur",
+  ),
+  OnBoard(
+    image: "assets/images/onboarding-3.png",
+    title: "Lorem ipsum dolor sit amet, consectetur",
+  ),
+];
 
 class OnboardContent extends StatelessWidget {
   const OnboardContent({
