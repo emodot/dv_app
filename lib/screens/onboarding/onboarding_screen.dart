@@ -80,7 +80,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     itemCount: demo_data.length,
                     controller: _pageController,
                     onPageChanged: (index) {
-                      _pageIndex = index;
+                      setState(() {
+                        _pageIndex = index;
+                      });
                     },
                     itemBuilder: (context, index) => OnboardContent(
                       image: demo_data[index].image,
@@ -93,12 +95,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ...List.generate(
                       demo_data.length,
                       (index) => Padding(
-                        padding: const EdgeInsets.only(
-                          right: 4,
-                        ),
-                        child: DotIndicator(
-                          isActive: index == _pageIndex,
-                        ),
+                        padding: const EdgeInsets.only(right: 4),
+                        child: DotIndicator(isActive: index == _pageIndex),
                       ),
                     ),
                     const Spacer(),
