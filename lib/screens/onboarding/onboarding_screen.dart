@@ -13,6 +13,8 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   late PageController _pageController;
 
+  int _pageIndex = 0;
+
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
@@ -77,6 +79,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: PageView.builder(
                     itemCount: demo_data.length,
                     controller: _pageController,
+                    onPageChanged: (index) {
+                      _pageIndex = index;
+                    },
                     itemBuilder: (context, index) => OnboardContent(
                       image: demo_data[index].image,
                       title: demo_data[index].title,
@@ -85,6 +90,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
                 Row(
                   children: [
+                    ...List.generate(
+                      demo_data.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(
+                          right: 4,
+                        ),
+                        child: DotIndicator(
+                          isActive: index == _pageIndex,
+                        ),
+                      ),
+                    ),
                     const Spacer(),
                     SizedBox(
                       height: 60,
@@ -110,6 +126,29 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class DotIndicator extends StatelessWidget {
+  const DotIndicator({
+    super.key,
+    this.isActive = false,
+  });
+
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: isActive ? 12 : 4,
+      width: 4,
+      decoration: const BoxDecoration(
+        color: kBackgroundColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(12),
         ),
       ),
     );
