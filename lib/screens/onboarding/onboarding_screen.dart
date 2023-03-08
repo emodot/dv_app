@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../constants.dart';
+import '../welcome/welcome_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -14,6 +15,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   late PageController _pageController;
 
   int _pageIndex = 0;
+  bool isLastPage = false;
 
   @override
   void initState() {
@@ -82,6 +84,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     onPageChanged: (index) {
                       setState(() {
                         _pageIndex = index;
+                        isLastPage = index == 2;
                       });
                     },
                     itemBuilder: (context, index) => OnboardContent(
@@ -103,22 +106,36 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     SizedBox(
                       height: 60,
                       width: 60,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          _pageController.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          backgroundColor: kPrimaryColorMid
-                        ),
-                        child: SvgPicture.asset(
-                          "assets/icons/ArrowRight.svg",
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: isLastPage
+                          ? ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  shape: const CircleBorder(),
+                                  backgroundColor: kPrimaryColorMid),
+                              child: SvgPicture.asset(
+                                "assets/icons/ArrowRight.svg",
+                                color: Colors.white,
+                              ),
+                            )
+                          : ElevatedButton(
+                              onPressed: () {
+                                _pageController.nextPage(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.ease,
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  shape: const CircleBorder(),
+                                  backgroundColor: kPrimaryColorMid),
+                              child: SvgPicture.asset(
+                                "assets/icons/ArrowRight.svg",
+                                color: Colors.white,
+                              ),
+                            ),
                     ),
                   ],
                 )
