@@ -1,6 +1,8 @@
 import 'package:dv_app/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../components/top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,17 +16,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    "assets/images/Logo-colored.png",
-                    height: 120,
-                    width: 120,
-                  ),
-                  SvgPicture.asset("assets/icons/menu_toggle.svg"),
-                ],
-              ),
+              const TopBar(),
               const SizedBox(
                 height: 50,
               ),
@@ -210,3 +202,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
