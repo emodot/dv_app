@@ -185,6 +185,28 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            label: "",
+            icon: Image.asset(
+              "assets/icons/team.png",
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "",
+            icon: Image.asset(
+              "assets/icons/home.png",
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "",
+            icon: Image.asset(
+              "assets/icons/about.png",
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
