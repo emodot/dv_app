@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
@@ -8,10 +10,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: 25.0,
-            right: 25.0,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
               Row(
@@ -35,7 +34,64 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Image.asset("assets/images/welcome.png")
+              Image.asset(
+                "assets/images/welcome.png",
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Column(
+                children: [
+                  const Text(
+                    "Can i know your name?",
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    // onChanged: () {},
+                    decoration: InputDecoration(
+                      hintText: "Name (Optional)",
+                      hintStyle: TextStyle(
+                        fontSize: 14,
+                        color: kTextColor.withOpacity(0.3),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: kTextColor.withOpacity(0.1),
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [
+                          kPrimaryColor2,
+                          kPrimaryColor,
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        // backgroundColor: kPrimaryColor,
+                        foregroundColor: Colors.white,
+                        fixedSize: const Size(180, 45),
+                      ),
+                      child: const Text("Submit"),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),
