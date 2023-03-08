@@ -58,19 +58,30 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 Row(
                   children: [
                     const Spacer(),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent.withOpacity(0.1),
-                      ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const WelcomeScreen(),
+                          ),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                          // backgroundColor: Colors.transparent.withOpacity(0.1),
+                          ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Text("Skip"),
+                          const Text(
+                            "Skip",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
                           const SizedBox(
                             width: 5,
                           ),
-                          SvgPicture.asset("assets/icons/ArrowRight.svg",
+                          SvgPicture.asset("assets/icons/CaretDoubleRight.svg",
                               color: Colors.white, width: 20.0),
                         ],
                       ),
@@ -110,7 +121,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ? ElevatedButton(
                               onPressed: () {
                                 Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const WelcomeScreen()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
