@@ -72,8 +72,8 @@ class WelcomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          kPrimaryColor2,
                           kPrimaryColor,
+                          kPrimaryColor2,
                         ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -89,7 +89,20 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       child: const Text("Submit"),
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  const Align(
+                    // alignment: Alignment.bottomCenter,
+                    child: Text(
+                      "*Note, we are not storing your name in any database",
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                  // const Spacer(),
                 ],
               )
             ],
