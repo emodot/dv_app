@@ -9,16 +9,19 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.asset(
-          "assets/images/Logo-colored.png",
-          height: 120,
-          width: 120,
-        ),
-        SvgPicture.asset("assets/icons/menu_toggle.svg"),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset(
+            "assets/images/Logo-colored.png",
+            height: 120,
+            width: 120,
+          ),
+          SvgPicture.asset("assets/icons/menu_toggle.svg"),
+        ],
+      ),
     );
   }
 }
