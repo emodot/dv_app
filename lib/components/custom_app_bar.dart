@@ -19,7 +19,7 @@ class CustomAppBar extends AppBar {
             Builder(builder: (context) {
               return GestureDetector(
                 onTap: () {
-                  Scaffold.of(context).openEndDrawer();
+                  Scaffold.of(context).openDrawer();
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 30),
