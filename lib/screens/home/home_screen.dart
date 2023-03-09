@@ -1,3 +1,4 @@
+import 'package:dv_app/components/bottom_nav_bar.dart';
 import 'package:dv_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: const Drawer(),
+      drawer: const Drawer(),
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -147,43 +148,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 95,
-        child: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: [
-            BottomNavigationBarItem(
-              label: "",
-              icon: Image.asset(
-                "assets/icons/team.png",
-                width: 30,
-                height: 30,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Image.asset(
-                "assets/icons/home.png",
-                width: 30,
-                height: 30,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Image.asset(
-                "assets/icons/about.png",
-                width: 30,
-                height: 30,
-              ),
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 
@@ -215,4 +187,5 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 
