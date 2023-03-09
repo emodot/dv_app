@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/onboarding/onboarding_screen.dart';
+import 'package:dv_app/screens/onboarding/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());

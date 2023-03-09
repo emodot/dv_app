@@ -1,8 +1,8 @@
 import 'package:dv_app/constants.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../components/top_bar.dart';
+import 'package:dv_app/components/custom_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,37 +10,37 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      endDrawer: const Drawer(),
+      appBar: CustomAppBar(),
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopBar(),
+              // const TopBar(),
               const SizedBox(
                 height: 50,
               ),
               RichText(
                 text: TextSpan(
                   children: [
-                    TextSpan(
+                    const TextSpan(
                       text: "Hi John,\n",
-                      style:
-                          Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                color: kPrimaryColor,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 18,
-                              ),
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18,
+                      ),
                     ),
                     TextSpan(
                       text: "How are you feeling today?",
-                      style:
-                          Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                color: kTextColor.withOpacity(0.8),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                height: 2,
-                              ),
+                      style: TextStyle(
+                        color: kTextColor.withOpacity(0.8),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        height: 2,
+                      ),
                     ),
                   ],
                 ),
@@ -51,64 +51,38 @@ class HomeScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    flex: 5,
                     child: RichText(
-                      text: TextSpan(
+                      text: const TextSpan(
+                        style: TextStyle(
+                          color: kTextColor,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 22,
+                          height: 1.5,
+                        ),
                         children: [
                           TextSpan(
                             text: "Let’s help you ",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.copyWith(
-                                  color: kTextColor,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 22,
-                                  height: 1.5,
-                                ),
                           ),
                           TextSpan(
                             text: "verify ",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.copyWith(
-                                  color: kPrimaryColor2,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 22,
-                                  height: 1.5,
-                                ),
+                            style: TextStyle(
+                              color: kPrimaryColor2,
+                            ),
                           ),
                           TextSpan(
                             text: "your drugs before ",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.copyWith(
-                                  color: kTextColor,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 22,
-                                  height: 1.5,
-                                ),
                           ),
                           TextSpan(
                             text: "usage.",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.copyWith(
-                                  color: kPrimaryColorMid,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 22,
-                                  height: 1.5,
-                                ),
+                            style: TextStyle(
+                              color: kPrimaryColorMid,
+                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
                   Expanded(
-                    flex: 5,
                     child: Image.asset("assets/images/doctor.png"),
                   ),
                 ],
@@ -177,28 +151,67 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            label: "",
-            icon: Image.asset(
-              "assets/icons/team.png",
+      bottomNavigationBar: SizedBox(
+        height: 95,
+        child: BottomNavigationBar(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: [
+            BottomNavigationBarItem(
+              label: "",
+              icon: Image.asset(
+                "assets/icons/team.png",
+                width: 30,
+                height: 30,
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: "",
-            icon: Image.asset(
-              "assets/icons/home.png",
+            BottomNavigationBarItem(
+              label: "",
+              icon: Image.asset(
+                "assets/icons/home.png",
+                width: 30,
+                height: 30,
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: "",
-            icon: Image.asset(
-              "assets/icons/about.png",
+            BottomNavigationBarItem(
+              label: "",
+              icon: Image.asset(
+                "assets/icons/about.png",
+                width: 30,
+                height: 30,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      automaticallyImplyLeading: false,
+      elevation: 0,
+      titleSpacing: 30,
+      centerTitle: false,
+      title: Image.asset(
+        "assets/images/Logo-colored.png",
+        width: 120,
+        height: 120,
+        fit: BoxFit.contain,
+      ),
+      actions: [
+        GestureDetector(
+          onTap: () {
+            // Scaffold.of(context).openDrawer();
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 30),
+            child: SvgPicture.asset("assets/icons/menu_toggle.svg"),
+          ),
+        )
+      ],
+      // leadingWidth: 100,
     );
   }
 }
