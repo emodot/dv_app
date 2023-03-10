@@ -1,4 +1,5 @@
 import 'package:dv_app/components/bottom_nav_bar.dart';
+import 'package:dv_app/components/side_nav_bar.dart';
 import 'package:dv_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: const SideNavBar(),
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -187,5 +188,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
