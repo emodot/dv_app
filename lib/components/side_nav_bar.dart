@@ -29,19 +29,19 @@ class SideNavBar extends StatelessWidget {
               ),
             ),
             const MenuList(
-              image: 'assets/icons/home-page-white 1.png',
+              image: 'assets/icons/HouseLine.svg',
               title: 'Home',
             ),
             const MenuList(
-              image: 'assets/icons/about-us-white 1.png',
+              image: 'assets/icons/Bank.svg',
               title: 'About',
             ),
             const MenuList(
-              image: 'assets/icons/out-tem-white 1.png',
+              image: 'assets/icons/Users.svg',
               title: 'Team',
             ),
             const MenuList(
-              image: 'assets/icons/reviews-white 1.png',
+              image: 'assets/icons/Bookmarks.svg',
               title: 'Newsletter',
             ),
           ],
@@ -74,8 +74,10 @@ class MenuList extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        leading: Image.asset(
+        leading: SvgPicture.asset(
           image,
+          color: Colors.white,
+          width: 20,
         ),
         title: Text(
           title,
