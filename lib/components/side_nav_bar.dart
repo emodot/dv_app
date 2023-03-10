@@ -1,4 +1,6 @@
 import 'package:dv_app/constants.dart';
+import 'package:dv_app/screens/about/about_screen.dart';
+import 'package:dv_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -28,21 +30,39 @@ class SideNavBar extends StatelessWidget {
                 ),
               ),
             ),
-            const MenuList(
+            MenuList(
               image: 'assets/icons/HouseLine.svg',
               title: 'Home',
+              press: () => {Navigator.of(context).pop()},
             ),
-            const MenuList(
+            MenuList(
               image: 'assets/icons/Bank.svg',
               title: 'About',
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AboutScreen(),
+                  ),
+                );
+              },
             ),
-            const MenuList(
+            MenuList(
               image: 'assets/icons/Users.svg',
               title: 'Team',
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WelcomeScreen(),
+                  ),
+                );
+              },
             ),
-            const MenuList(
+            MenuList(
               image: 'assets/icons/Bookmarks.svg',
               title: 'Newsletter',
+              press: () {},
             ),
           ],
         ),
@@ -56,9 +76,11 @@ class MenuList extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
+    required this.press,
   });
 
   final String image, title;
+  final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +107,7 @@ class MenuList extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        onTap: () {},
+        onTap: press,
       ),
     );
   }
