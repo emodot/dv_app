@@ -197,15 +197,15 @@ class OnBoard {
 final List<OnBoard> demo_data = [
   OnBoard(
     image: "assets/images/onboarding-1.png",
-    title: "Lorem ipsum dolor sit amet, consectetur",
+    title: "Health is Wealth! We saw the problem and we are fixing it!",
   ),
   OnBoard(
     image: "assets/images/onboarding-2.png",
-    title: "Lorem ipsum dolor sit amet, consectetur",
+    title: "Millions have died as a result of fake drugs! We must reduce the number!",
   ),
   OnBoard(
     image: "assets/images/onboarding-3.png",
-    title: "Lorem ipsum dolor sit amet, consectetur",
+    title: "Verify Your Drugs",
   ),
 ];
 

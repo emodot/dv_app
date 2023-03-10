@@ -6,6 +6,7 @@ class CustomAppBar extends AppBar {
       : super(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
+          toolbarHeight: 100,
           elevation: 0,
           titleSpacing: 30,
           centerTitle: false,
