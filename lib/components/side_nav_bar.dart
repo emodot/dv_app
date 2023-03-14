@@ -39,6 +39,7 @@ class SideNavBar extends StatelessWidget {
               image: 'assets/icons/Bank.svg',
               title: 'About',
               press: () {
+                Navigator.of(context).pop();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

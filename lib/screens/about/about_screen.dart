@@ -21,7 +21,9 @@ class AboutScreen extends StatelessWidget {
               Row(
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
