@@ -11,39 +11,11 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SideNavBar(),
-      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
-              Row(
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/CaretLeft.svg",
-                          color: kTextColor.withOpacity(0.7),
-                          width: 14,
-                        ),
-                        Text(
-                          "Back",
-                          style: TextStyle(
-                            color: kTextColor.withOpacity(0.7),
-                            fontSize: 12,
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
               const SizedBox(
                 height: 30,
               ),

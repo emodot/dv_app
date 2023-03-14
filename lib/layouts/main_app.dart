@@ -1,3 +1,5 @@
+import 'package:dv_app/components/custom_app_bar.dart';
+import 'package:dv_app/components/side_nav_bar.dart';
 import 'package:dv_app/screens/about/about_screen.dart';
 import 'package:dv_app/screens/home/home_screen.dart';
 import 'package:dv_app/screens/team/team_screen.dart';
@@ -21,7 +23,13 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      drawer: const SideNavBar(),
+      appBar: CustomAppBar(),
+      // body: screens[currentIndex],
+      body: IndexedStack(
+        index: currentIndex,
+        children: screens,
+      ),
       bottomNavigationBar: SizedBox(
         height: 95,
         child: BottomNavigationBar(
