@@ -6,14 +6,19 @@ import 'package:dv_app/screens/team/team_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainApp extends StatefulWidget {
-  const MainApp({super.key});
+  const MainApp({
+    super.key,
+    this.index = 1,
+  });
+
+  final int index;
 
   @override
   State<MainApp> createState() => _MainAppState();
 }
 
 class _MainAppState extends State<MainApp> {
-  int currentIndex = 1;
+  late int currentIndex = widget.index;
   final screens = [
     const AboutScreen(),
     const HomeScreen(),

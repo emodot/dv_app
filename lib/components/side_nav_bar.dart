@@ -1,4 +1,5 @@
 import 'package:dv_app/constants.dart';
+import 'package:dv_app/layouts/main_app.dart';
 import 'package:dv_app/screens/about/about_screen.dart';
 import 'package:dv_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,13 @@ class SideNavBar extends StatelessWidget {
             MenuList(
               image: 'assets/icons/HouseLine.svg',
               title: 'Home',
-              press: () => {Navigator.of(context).pop()},
+              press: () {Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MainApp(index: 1),
+                  ),
+                );},
             ),
             MenuList(
               image: 'assets/icons/Bank.svg',
@@ -43,7 +50,7 @@ class SideNavBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const AboutScreen(),
+                    builder: (context) => const MainApp(index: 0),
                   ),
                 );
               },
@@ -55,7 +62,7 @@ class SideNavBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const WelcomeScreen(),
+                    builder: (context) => const MainApp(index: 2),
                   ),
                 );
               },
@@ -99,7 +106,7 @@ class MenuList extends StatelessWidget {
       child: ListTile(
         leading: SvgPicture.asset(
           image,
-          color: Colors.white,
+          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
           width: 20,
         ),
         title: Text(
