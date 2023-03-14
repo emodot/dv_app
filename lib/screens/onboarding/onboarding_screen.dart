@@ -82,7 +82,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             width: 5,
                           ),
                           SvgPicture.asset("assets/icons/CaretDoubleRight.svg",
-                              colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn), width: 20.0),
+                              colorFilter: const ColorFilter.mode(
+                                  Colors.white, BlendMode.srcIn),
+                              width: 20.0),
                         ],
                       ),
                     ),
@@ -146,7 +148,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   backgroundColor: kPrimaryColorMid),
                               child: SvgPicture.asset(
                                 "assets/icons/ArrowRight.svg",
-                                color: Colors.white,
+                                colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                               ),
                             ),
                     ),
@@ -201,7 +203,8 @@ final List<OnBoard> demo_data = [
   ),
   OnBoard(
     image: "assets/images/onboarding-2.png",
-    title: "Millions have died as a result of fake drugs! We must reduce the number!",
+    title:
+        "Millions have died as a result of fake drugs! We must reduce the number!",
   ),
   OnBoard(
     image: "assets/images/onboarding-3.png",
