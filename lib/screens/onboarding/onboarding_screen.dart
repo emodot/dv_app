@@ -133,7 +133,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   backgroundColor: kPrimaryColorMid),
                               child: SvgPicture.asset(
                                 "assets/icons/ArrowRight.svg",
-                                color: Colors.white,
+                                colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                               ),
                             )
                           : ElevatedButton(
