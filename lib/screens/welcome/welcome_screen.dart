@@ -1,3 +1,4 @@
+import 'package:dv_app/layouts/main_app.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -94,12 +95,11 @@ class WelcomeScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
+                              builder: (context) => const MainApp(),
                             ),
                           );
                         },
                         style: TextButton.styleFrom(
-                          // backgroundColor: kPrimaryColor,
                           foregroundColor: Colors.white,
                           fixedSize: const Size(180, 45),
                         ),
