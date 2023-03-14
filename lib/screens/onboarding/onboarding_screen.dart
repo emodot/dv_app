@@ -82,7 +82,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             width: 5,
                           ),
                           SvgPicture.asset("assets/icons/CaretDoubleRight.svg",
-                              color: Colors.white, width: 20.0),
+                              colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn), width: 20.0),
                         ],
                       ),
                     ),
