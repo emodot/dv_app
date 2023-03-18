@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dv_app/screens/onboarding/onboarding_screen.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       title: 'DV App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // appBarTheme: const AppBarTheme(
+        //   systemOverlayStyle: SystemUiOverlayStyle.dark,
+        // ),
       ),
       home: const OnBoardingScreen(),
     );
