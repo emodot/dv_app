@@ -4,6 +4,7 @@ import 'package:dv_app/screens/about/about_screen.dart';
 import 'package:dv_app/screens/home/home_screen.dart';
 import 'package:dv_app/screens/team/team_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({
@@ -27,47 +28,51 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const SideNavBar(),
-      appBar: CustomAppBar(),
-      // body: screens[currentIndex],
-      body: IndexedStack(
-        index: currentIndex,
-        children: screens,
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 95,
-        child: BottomNavigationBar(
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          currentIndex: currentIndex,
-          onTap: (index) => setState(() => currentIndex = index),
-          items: [
-            BottomNavigationBarItem(
-              label: "",
-              icon: Image.asset(
-                "assets/icons/team.png",
-                width: 30,
-                height: 30,
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        drawer: const SideNavBar(),
+        appBar: CustomAppBar(),
+        // body: screens[currentIndex],
+        body: IndexedStack(
+          index: currentIndex,
+          children: screens,
+        ),
+        bottomNavigationBar: SizedBox(
+          height: 95,
+          child: BottomNavigationBar(
+            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            currentIndex: currentIndex,
+            onTap: (index) => setState(() => currentIndex = index),
+            items: [
+              BottomNavigationBarItem(
+                label: "",
+                icon: Image.asset(
+                  "assets/icons/team.png",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-            ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Image.asset(
-                "assets/icons/home.png",
-                width: 30,
-                height: 30,
+              BottomNavigationBarItem(
+                label: "",
+                icon: Image.asset(
+                  "assets/icons/home.png",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-            ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Image.asset(
-                "assets/icons/about.png",
-                width: 30,
-                height: 30,
+              BottomNavigationBarItem(
+                label: "",
+                icon: Image.asset(
+                  "assets/icons/about.png",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

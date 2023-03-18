@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBar extends AppBar {
-  CustomAppBar({super.key})
+  CustomAppBar({super.key,})
       : super(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
