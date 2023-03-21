@@ -31,47 +31,55 @@ class _MainAppState extends State<MainApp> {
     // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
-      child: Scaffold(
-        drawer: const SideNavBar(),
-        appBar: CustomAppBar(),
-        // body: screens[currentIndex],
-        body: IndexedStack(
-          index: currentIndex,
-          children: screens,
-        ),
-        bottomNavigationBar: SizedBox(
-          height: 95,
-          child: BottomNavigationBar(
-            showSelectedLabels: true,
-            showUnselectedLabels: false,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
-            items: [
-              BottomNavigationBarItem(
-                label: "",
-                icon: Image.asset(
-                  "assets/icons/team.png",
-                  width: 30,
-                  height: 30,
+      child: GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: Scaffold(
+          drawer: const SideNavBar(),
+          appBar: CustomAppBar(),
+          // body: screens[currentIndex],
+          body: IndexedStack(
+            index: currentIndex,
+            children: screens,
+          ),
+          bottomNavigationBar: SizedBox(
+            height: 95,
+            child: BottomNavigationBar(
+              showSelectedLabels: true,
+              showUnselectedLabels: false,
+              currentIndex: currentIndex,
+              onTap: (index) => setState(() => currentIndex = index),
+              items: [
+                BottomNavigationBarItem(
+                  label: "",
+                  icon: Image.asset(
+                    "assets/icons/team.png",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                label: "",
-                icon: Image.asset(
-                  "assets/icons/home.png",
-                  width: 30,
-                  height: 30,
+                BottomNavigationBarItem(
+                  label: "",
+                  icon: Image.asset(
+                    "assets/icons/home.png",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                label: "",
-                icon: Image.asset(
-                  "assets/icons/about.png",
-                  width: 30,
-                  height: 30,
+                BottomNavigationBarItem(
+                  label: "",
+                  icon: Image.asset(
+                    "assets/icons/about.png",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
