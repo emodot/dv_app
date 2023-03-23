@@ -2,13 +2,36 @@ import 'package:dv_app/components/bottom_nav_bar.dart';
 import 'package:dv_app/components/drug_approved.dart';
 import 'package:dv_app/components/side_nav_bar.dart';
 import 'package:dv_app/constants.dart';
+import 'package:dv_app/model/verification_model.dart';
+import 'package:dv_app/services/verification_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:dv_app/components/custom_app_bar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+bool loading = false;
+late String drugId;
+DrugVerification drugVerification = DrugVerification(
+  brand: '',
+  regNo: '',
+  response: '',
+  status: '',
+);
+
+class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController drugIdController = TextEditingController();
+  @override
+  void dispose() {
+    drugIdController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +114,8 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              TextField(
+              TextFormField(
+                controller: drugIdController,
                 decoration: InputDecoration(
                   hintText: "Enter NAFDAC -No",
                   hintStyle: TextStyle(
@@ -131,20 +155,44 @@ class HomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DrugApproved(),
-                        ),
-                      );
+                    onPressed: () async {
+                      setState(() {
+                        loading = true;
+                        drugId = drugIdController.text;
+                      });
+                      // print(drugId);
+                      try {
+                        drugVerification = await VerificationClient().getDrug(drugId);
+                        setState(() {
+                          loading = false;
+                        });
+                        print(drugVerification);
+                      } catch (err) {
+                        setState(() {
+                          loading = false;
+                        });
+                      }
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const DrugApproved(),
+                      //   ),
+                      // );
                     },
                     style: TextButton.styleFrom(
                       // backgroundColor: kPrimaryColor,
                       foregroundColor: Colors.white,
                       fixedSize: const Size(180, 45),
                     ),
-                    child: const Text("Submit"),
+                    child: loading
+                        ? const SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
+                        : const Text("Submit"),
                   ),
                 ),
               ),
