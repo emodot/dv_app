@@ -10,7 +10,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dv_app/components/custom_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+    required this.name,
+  });
+  final String name;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -18,12 +22,13 @@ class HomeScreen extends StatefulWidget {
 
 bool loading = false;
 late String drugId;
-DrugVerification drugVerification = DrugVerification(
-  brand: '',
-  regNo: '',
-  response: '',
-  status: '',
-);
+late DrugVerification drugDetails;
+// DrugVerification drugVerification = DrugVerification(
+//   status: '',
+//   brand: '',
+//   regNo: '',
+//   response: '',
+// );
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController drugIdController = TextEditingController();
@@ -49,9 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
               RichText(
                 text: TextSpan(
                   children: [
-                    const TextSpan(
-                      text: "Hi John,\n",
-                      style: TextStyle(
+                    TextSpan(
+                      text: "Hi ${widget.name},\n",
+                      style: const TextStyle(
                         color: kPrimaryColor,
                         fontWeight: FontWeight.w800,
                         fontSize: 18,
@@ -162,15 +167,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                       // print(drugId);
                       try {
-                        drugVerification = await VerificationClient().getDrug(drugId);
+                        drugDetails =
+                            await VerificationClient().getDrug(drugId);
                         setState(() {
                           loading = false;
                         });
-                        print(drugVerification);
+                      //   drugDetails.status == 'success' ?
+                      //   Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const DrugApproved(),
+                      //   ),
+                      // ) : '';
+                        print(drugDetails.status);
                       } catch (err) {
                         setState(() {
                           loading = false;
                         });
+                        rethrow;
                       }
                       // Navigator.push(
                       //   context,
