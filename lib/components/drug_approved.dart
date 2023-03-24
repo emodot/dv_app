@@ -11,7 +11,7 @@ class DrugApproved extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SideNavBar(),
+      // drawer: SideNavBar(),
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Center(
@@ -65,12 +65,12 @@ class DrugApproved extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MainApp(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => MainApp(name: ),
+                      //   ),
+                      // );
                     },
                     style: TextButton.styleFrom(
                       // backgroundColor: kPrimaryColor,

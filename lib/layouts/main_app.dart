@@ -7,11 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class MainApp extends StatefulWidget {
-  const MainApp({
+   const MainApp({
     super.key,
+    required this.userName,
     this.index = 1,
   });
 
+  final String userName;
   final int index;
 
   @override
@@ -19,10 +21,11 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
+  // final String userName;
   late int currentIndex = widget.index;
-  final screens = [
+  late final screens = [
     const AboutScreen(),
-    const HomeScreen(),
+    HomeScreen(name: widget.userName),
     const TeamScreen(),
   ];
 
@@ -39,7 +42,7 @@ class _MainAppState extends State<MainApp> {
           }
         },
         child: Scaffold(
-          drawer: const SideNavBar(),
+          drawer: SideNavBar(userName: widget.userName),
           appBar: CustomAppBar(),
           // body: screens[currentIndex],
           body: IndexedStack(

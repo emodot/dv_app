@@ -15,7 +15,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
   final screens = [
-    const HomeScreen(),
+    // HomeScreen(name: ),
     const AboutScreen(),
     const TeamScreen(),
   ];

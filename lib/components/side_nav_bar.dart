@@ -8,7 +8,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 class SideNavBar extends StatelessWidget {
   const SideNavBar({
     super.key,
+    required this.userName,
   });
+
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +37,18 @@ class SideNavBar extends StatelessWidget {
             MenuList(
               image: 'assets/icons/HouseLine.svg',
               title: 'Home',
-              press: () {Navigator.of(context).pop();
+              press: () {
+                Navigator.of(context).pop();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MainApp(index: 1),
+                    builder: (context) => MainApp(
+                      index: 1,
+                      userName: userName,
+                    ),
                   ),
-                );},
+                );
+              },
             ),
             MenuList(
               image: 'assets/icons/Bank.svg',
@@ -50,7 +58,10 @@ class SideNavBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MainApp(index: 0),
+                    builder: (context) => MainApp(
+                      index: 0,
+                      userName: userName,
+                    ),
                   ),
                 );
               },
@@ -62,7 +73,10 @@ class SideNavBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MainApp(index: 2),
+                    builder: (context) => MainApp(
+                      index: 2,
+                      userName: userName,
+                    ),
                   ),
                 );
               },

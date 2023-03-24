@@ -1,11 +1,32 @@
 import 'package:dv_app/layouts/main_app.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants.dart';
-import '../home/home_screen.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  TextEditingController nameController = TextEditingController();
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  Future<void> _submit() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      prefs.setString('username', nameController.text);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +80,7 @@ class WelcomeScreen extends StatelessWidget {
                         height: 20,
                       ),
                       TextField(
+                        controller: nameController,
                         // onChanged: () {},
                         decoration: InputDecoration(
                           hintText: "Name (Optional)",
@@ -102,7 +124,7 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const MainApp(),
+                                builder: (context) => MainApp(userName: nameController.text,),
                               ),
                             );
                           },
