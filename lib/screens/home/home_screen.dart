@@ -172,13 +172,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         setState(() {
                           loading = false;
                         });
-                      //   drugDetails.status == 'success' ?
-                      //   Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const DrugApproved(),
-                      //   ),
-                      // ) : '';
+                        drugDetails.status == 'success'
+                            ? 
+                            // showModalBottomSheet(
+                            //     context: context,
+                            //     builder: (context) {
+                            //       return Container();
+                            //     })
+                            // : '';
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const DrugApproved(),
+                          ),
+                        ) : '';
                         print(drugDetails.status);
                       } catch (err) {
                         setState(() {
