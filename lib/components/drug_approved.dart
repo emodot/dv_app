@@ -65,6 +65,7 @@ class DrugApproved extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      Navigator.of(context).pop();
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(
