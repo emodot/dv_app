@@ -183,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const DrugApproved(),
+                            builder: (context) => DrugApproved(brandName: drugDetails.brand, drugId: drugDetails.regNo, status: drugDetails.status,),
                           ),
                         ) : '';
                         print(drugDetails.status);
