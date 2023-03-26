@@ -11,7 +11,7 @@ class DrugApproved extends StatelessWidget {
   const DrugApproved({
     super.key,
     required this.drugId,
-    required this.brandName, 
+    required this.brandName,
     required this.status,
   });
 
@@ -26,7 +26,9 @@ class DrugApproved extends StatelessWidget {
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Center(
-          child: SucessPage(drugId: drugId, brandName: brandName),
+          child: status == "success"
+              ? SucessPage(drugId: drugId, brandName: brandName)
+              : const FailedPage(),
         ),
       ),
     );
@@ -126,14 +128,14 @@ class FailedPage extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        Image.asset("assets/images/approved.png"),
+        Image.asset("assets/images/declined.png"),
         const SizedBox(
           height: 60,
         ),
         const Text(
           "Drug Not Approved!",
           style: TextStyle(
-              color: Color(0xFF2AAC0A),
+              color: Color.fromARGB(255, 235, 13, 13),
               fontWeight: FontWeight.w800,
               fontSize: 24),
         ),
