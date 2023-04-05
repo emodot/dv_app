@@ -178,6 +178,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             //       return Container();
                             //     })
                             // : '';
+                            if (!mounted){
+                              return;
+                            }
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
